@@ -115,17 +115,26 @@ struct ContentView: View {
                 title: "Showcase your new App Features",
                 subtitle: "Present your new app features..."
             ),
+        primaryAction: WhatsNew.PrimaryAction(
+                title: "Continue",
+                backgroundColor: .accentColor,
+                foregroundColor: .white,
+                hapticFeedback: .notification(.success),
+                onDismiss: {
+                            UserDefaults.standard.set(false, forKey: "hasShowWhatsNew")
+                }
+            )
             // ...
         ]
     )
-
+    @State private var hasShownWhatsNew = UserDefaults.standard.bool(forKey: "hasShowWhatsNew")
     var body: some View {
         NavigationView {
             // ...
         }
-        .sheet(
-            whatsNew: self.$whatsNew
-        )
+        .sheet(isPresented: $hasShownWhatsNew) {
+            WhatsNewView(whatsNew: whatsNew!)
+        }
     }
 
 }
