@@ -127,7 +127,7 @@ struct ContentView: View {
             // ...
         ]
     )
-    @State private var hasShownWhatsNew = UserDefaults.standard.bool(forKey: "hasShowWhatsNew")
+    @State private var hasShownWhatsNew = UserDefaults.standard.bool(forKey: "hasShownWhatsNew")
     var body: some View {
         NavigationView {
             // ...
